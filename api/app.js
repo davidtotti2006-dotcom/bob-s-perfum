@@ -64,7 +64,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Musc de nuit', 'Jasmin étoilé', 'Iris nacré'],
           base: ['Santal blanc', 'Ambre lunaire', 'Vanille de Madagascar'],
         },
-        images: ['/moonlight-bobs.jpeg'],
+        images: ['/images/moonlight-bobs.jpeg'],
         sizes: [
           { ml: 30, price: 175, stock: 22 },
           { ml: 50, price: 235, stock: 16 },
@@ -84,7 +84,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Vétiver sauvage', 'Cèdre brûlé', 'Cuir animal'],
           base: ['Oud boisé', 'Mousse de forêt', 'Musc sauvage'],
         },
-        images: ['/l-heure-sauvage-bobs.jpeg'],
+        images: ['/images/l-heure-sauvage-bobs.jpeg'],
         sizes: [
           { ml: 30, price: 195, stock: 15 },
           { ml: 50, price: 260, stock: 10 },

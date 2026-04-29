@@ -200,7 +200,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 mt-1">
           {/* Moonlight */}
           <Link href="/collection/moonlight" className="group relative overflow-hidden block" style={{ aspectRatio: '4/5' }}>
-            <img src="/moonlight-bobs.jpeg" alt="Moonlight"
+            <img src="/images/moonlight-bobs.jpeg" alt="Moonlight"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
@@ -227,7 +227,7 @@ export default function Home() {
 
           {/* Heure Sauvage */}
           <Link href="/collection/heure-sauvage" className="group relative overflow-hidden block" style={{ aspectRatio: '4/5' }}>
-            <img src="/l-heure-sauvage-bobs.jpeg" alt="Heure Sauvage"
+            <img src="/images/l-heure-sauvage-bobs.jpeg" alt="Heure Sauvage"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
