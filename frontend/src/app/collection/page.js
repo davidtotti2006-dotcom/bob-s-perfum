@@ -128,7 +128,7 @@ export default function CollectionPage() {
     setLoading(true);
     getPerfumes({ limit: 100 })
       .then((data) => {
-        setPerfumes((data.perfumes || []).filter(p => p.images?.length > 0));
+        setPerfumes(data.perfumes || []);
         setTotal(data.total || 0);
         setLoading(false);
       })
