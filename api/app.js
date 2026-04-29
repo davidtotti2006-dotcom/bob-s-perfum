@@ -84,7 +84,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Vétiver sauvage', 'Cèdre brûlé', 'Cuir animal'],
           base: ['Oud boisé', 'Mousse de forêt', 'Musc sauvage'],
         },
-        images: ["/l-heure-sauvage-bob's.jpeg"],
+        images: ['/l-heure-sauvage-bobs.jpeg'],
         sizes: [
           { ml: 30, price: 195, stock: 15 },
           { ml: 50, price: 260, stock: 10 },
@@ -307,7 +307,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Benjoin', 'Iris poudré', 'Cannelle dorée'],
           base: ['Musc crémeux', 'Santal vanillé', 'Ambre chaud'],
         },
-        images: ['/images/vanille-dorée-gourmand-vanillé.png'],
+        images: ['/images/vanille-doree-gourmand.png'],
         sizes: [
           { ml: 30, price: 165, stock: 20 },
           { ml: 50, price: 220, stock: 15 },
@@ -327,7 +327,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Rose absolue', 'Iris poudré', 'Muguet'],
           base: ['Musc satiné', 'Bois de rose', 'Ambre blanc'],
         },
-        images: ['/images/rose-eternelle-floral-poudré.png'],
+        images: ['/images/rose-eternelle-floral-poudre.png'],
         sizes: [
           { ml: 30, price: 175, stock: 18 },
           { ml: 50, price: 235, stock: 14 },
@@ -347,7 +347,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ["Vétiver d'Haïti", 'Bois de gaïac', 'Cyprès'],
           base: ['Mousse de chêne', 'Encens vert', 'Musc boisé'],
         },
-        images: ['/images/cèdre-vert-boisé-vert  (2).png'],
+        images: ['/images/cedre-vert-boise.png'],
         sizes: [
           { ml: 30, price: 170, stock: 22 },
           { ml: 50, price: 230, stock: 16 },
@@ -367,7 +367,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Algue bleue', 'Fleur de sel', 'Calone marine'],
           base: ['Ambre aquatique', 'Musc frais', 'Cèdre blanc'],
         },
-        images: ["/images/océan-d'azur-hespéridié-marin.png"],
+        images: ['/images/ocean-azur-marin.png'],
         sizes: [
           { ml: 30, price: 155, stock: 28 },
           { ml: 50, price: 210, stock: 20 },
@@ -387,7 +387,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Oud fumé', 'Cuir tanné', 'Résine de pin'],
           base: ['Cèdre brûlé', 'Musc animal', 'Labdanum'],
         },
-        images: ['/images/boi-sauvage-boisé-fumé.png'],
+        images: ['/images/bois-sauvage-boise-fume.png'],
         sizes: [
           { ml: 30, price: 185, stock: 16 },
           { ml: 50, price: 250, stock: 11 },
@@ -407,7 +407,7 @@ app.post('/api/seed', async (req, res) => {
           heart: ['Ambre gris', 'Encens', 'Myrrhe'],
           base: ['Oud', 'Musc oriental', 'Résine de benjoin'],
         },
-        images: ['/images/ambre-royale- orientale-ambré .png'],
+        images: ['/images/ambre-royale-oriental-ambre.png'],
         sizes: [
           { ml: 30, price: 195, stock: 14 },
           { ml: 50, price: 265, stock: 9 },
