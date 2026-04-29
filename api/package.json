@@ -2,7 +2,7 @@
   "name": "api-maison-bob",
   "version": "1.0.0",
   "description": "Le cœur numérique et l'API de la Maison Bob",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
