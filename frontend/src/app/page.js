@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative h-screen w-full overflow-hidden bg-[#0a0a0a]">
-        <img src="/bobs-acceuil%20.jpeg" alt="" aria-hidden="true"
+        <img src="/bobs-accueil.jpeg" alt="" aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center"
           style={{
             transform: `scale(1.05) translate(${mousePos.x * 0.012}px, ${mousePos.y * 0.012}px)`,
@@ -118,7 +118,7 @@ export default function Home() {
           <div className="absolute -inset-3 border border-[#c687a3]/20 translate-x-3 translate-y-3 -z-10
             group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-1000" />
           <div className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-xl relative">
-            <img src="/fondatrice2.Png" alt="Fondatrice Bob's"
+            <img src="/fondatrice2.png" alt="Fondatrice Bob's"
               className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1500ms]" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           </div>
@@ -227,7 +227,7 @@ export default function Home() {
 
           {/* Heure Sauvage */}
           <Link href="/collection/heure-sauvage" className="group relative overflow-hidden block" style={{ aspectRatio: '4/5' }}>
-            <img src="/l-heure-sauvage-bob%27s.jpeg" alt="Heure Sauvage"
+            <img src="/l-heure-sauvage-bobs.jpeg" alt="Heure Sauvage"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"

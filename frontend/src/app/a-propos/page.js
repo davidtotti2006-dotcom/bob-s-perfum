@@ -85,7 +85,7 @@ export default function AProposPage() {
             <div className="absolute -inset-3 border border-[#c687a3]/15 translate-x-3 translate-y-3 -z-10
               group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-1000" />
             <div className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-xl">
-              <img src="/fondatrice2.Png" alt="A. B., fondatrice"
+              <img src="/fondatrice2.png" alt="A. B., fondatrice"
                 className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[2000ms]" />
             </div>
             <div className="absolute -bottom-3 -right-3 w-20 h-20 flex items-center justify-center"

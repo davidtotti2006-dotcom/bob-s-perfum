@@ -26,7 +26,7 @@ export const metadata = {
   description:
     "Haute Parfumerie — Paris & Abidjan. Des fragrances d'exception pour les âmes singulières.",
   icons: {
-    icon: '/bobs-flavicon .jpeg',
+    icon: '/bobs-favicon.jpeg',
   },
 };
 
