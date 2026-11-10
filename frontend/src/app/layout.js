@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
 import Preloader from '@/components/ui/Preloader';
+import CustomCursor from '@/components/ui/CustomCursor';
 import './globals.css';
 
 const cormorant = Cormorant_Garamond({
@@ -35,6 +36,8 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className={`${cormorant.variable} ${montserrat.variable} antialiased`}>
         <Preloader />
+        {/* Le curseur s'auto-désactive sur tactile et en mouvement réduit. */}
+        <CustomCursor />
         <Navbar />
         <CartDrawer />
         {children}

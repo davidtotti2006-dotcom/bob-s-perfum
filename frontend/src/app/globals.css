@@ -15,6 +15,56 @@
   --color-teal:        #6aabb0;
   --color-purple:      #9b8ea8;
   --color-border:      #ebd5c1;
+
+  /* ─────────────────────────────────────────────────────────
+     TEXTE ACCESSIBLE — WCAG 2.2 AAA (≥ 7:1 sur le cream)
+     ─────────────────────────────────────────────────────────
+     Audit des teintes d'origine en texte sur #faf9f8 :
+       rose   #c687a3 → 2.70:1   gold #b38b59 → 2.96:1
+       teal   #6aabb0 → 2.48:1   purple #9b8ea8 → 2.92:1
+     Toutes échouent, même au niveau AA (4.5:1). Les teintes sont
+     CONSERVÉES pour le décoratif ; ces variantes, de même teinte mais
+     assombries, prennent le relais dès qu'il s'agit de texte.
+     ───────────────────────────────────────────────────────── */
+  --ink-rose:    #833e5d;  /*  7.10:1  AAA */
+  --ink-gold:    #6b5131;  /*  7.02:1  AAA */
+  --ink-teal:    #325c5f;  /*  7.05:1  AAA */
+  --ink-purple:  #5d5169;  /*  7.02:1  AAA */
+  --ink-muted:   #5c5651;  /*  7.04:1  AAA — remplace text-gray-400 (2.41:1) */
+
+  /* Sur surface encre #0a0a0a, les teintes claires passent déjà AAA :
+     rose-light 9.89:1 · gold-light 9.44:1 · border 12.28:1 */
+
+  /* ─────────────────────────────────────────────────────────
+     TOKENS OLFACTIFS — valeurs par défaut (famille neutre)
+     Surchargés à chaud par familyVars() depuis src/lib/olfactory.js
+     ───────────────────────────────────────────────────────── */
+  --accent:       #c687a3;
+  --accent-ink:   #833e5d;
+  --accent-glow:  #e8b5ce;
+  --note-top:     #efe4da;
+  --note-heart:   #c9b6a4;
+  --note-base:    #8a7a6b;
+  --olf-weight:   0.5;
+  --olf-lumen:    0.9;
+
+  /* ─────────────────────────────────────────────────────────
+     ÉCHELLE TYPOGRAPHIQUE — nombre d'or
+     ─────────────────────────────────────────────────────────
+     Paliers d'affichage en φ pur (1.618) : step-2, step-4, step-6.
+     Paliers intermédiaires en √φ (1.272), strictement dérivé de φ —
+     φ seul saute de 16px à 26px à 42px, inutilisable en UI.
+     ───────────────────────────────────────────────────────── */
+  --phi:        1.618;
+  --step--2:    0.618rem;   /*  9.9px — micro-capitales */
+  --step--1:    0.786rem;   /* 12.6px — légendes */
+  --step-0:     1rem;       /* 16.0px — corps */
+  --step-1:     1.272rem;   /* 20.4px — intertitre */
+  --step-2:     1.618rem;   /* 25.9px — h3   (φ)  */
+  --step-3:     2.058rem;   /* 32.9px — h2         */
+  --step-4:     2.618rem;   /* 41.9px — h1   (φ²) */
+  --step-5:     3.330rem;   /* 53.3px — display    */
+  --step-6:     4.236rem;   /* 67.8px — hero (φ³) */
 }
 
 /* ═══════════════════════════════════════
@@ -260,4 +310,171 @@ body {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* ═══════════════════════════════════════
+   ACCESSIBILITÉ — AAA
+═══════════════════════════════════════ */
+
+/* Anneau de focus visible sur toute surface. Jamais supprimé. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-ink, #833e5d);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Sur surface encre, l'anneau passe en teinte claire pour rester à 7:1. */
+.on-ink :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline-color: var(--accent-glow, #e8b5ce);
+}
+
+/* Classes texte conformes. À préférer à text-[#c687a3] pour tout texte. */
+.text-ink-accent { color: var(--accent-ink); }
+.text-ink-muted  { color: var(--ink-muted); }
+
+/* Zone de clic : WCAG 2.2 § 2.5.8 impose 24×24px minimum. */
+.target-safe { min-width: 24px; min-height: 24px; }
+
+/* Lecteurs d'écran uniquement. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHIE — paliers φ
+═══════════════════════════════════════ */
+.t--2 { font-size: var(--step--2); letter-spacing: 0.35em; text-transform: uppercase; }
+.t--1 { font-size: var(--step--1); letter-spacing: 0.22em; }
+.t-0  { font-size: var(--step-0);  line-height: 1.618; }
+.t-1  { font-size: var(--step-1);  line-height: 1.5; }
+.t-2  { font-size: var(--step-2);  line-height: 1.272; }
+.t-3  { font-size: var(--step-3);  line-height: 1.2; }
+.t-4  { font-size: var(--step-4);  line-height: 1.1; }
+.t-5  { font-size: var(--step-5);  line-height: 1.05; }
+.t-6  { font-size: var(--step-6);  line-height: 0.95; }
+
+/* Interlignage = φ pour le corps : la mesure de lecture la plus confortable. */
+.measure { max-width: 38ch; line-height: var(--phi); }
+
+/* ═══════════════════════════════════════
+   GPU — accélération matérielle
+═══════════════════════════════════════
+   `will-change` est coûteux : chaque élément porteur réserve une couche
+   GPU. On ne le pose donc QUE pendant l'interaction (.is-animating),
+   jamais en permanence sur un sélecteur large.
+═══════════════════════════════════════ */
+.gpu            { transform: translate3d(0, 0, 0); backface-visibility: hidden; }
+.gpu.is-animating { will-change: transform, opacity; }
+.gpu-done       { will-change: auto; }
+
+/* Isole le repaint d'un bloc : le survol d'une carte ne salit pas la grille. */
+.contain-card { contain: layout paint style; }
+
+/* ═══════════════════════════════════════
+   VERRE GIVRÉ — flacon
+═══════════════════════════════════════ */
+.frost {
+  position: relative;
+  background:
+    linear-gradient(155deg,
+      rgba(253, 251, 247, 0.72) 0%,
+      rgba(253, 251, 247, 0.42) 48%,
+      color-mix(in srgb, var(--accent) 14%, transparent) 100%);
+  backdrop-filter: blur(14px) saturate(1.18);
+  -webkit-backdrop-filter: blur(14px) saturate(1.18);
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  box-shadow:
+    0 24px 60px -22px color-mix(in srgb, var(--note-base) 42%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Le reflet vertical qui fait lire « verre » plutôt que « carte floue ». */
+.frost::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 12%;
+  width: 14%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-10deg);
+  pointer-events: none;
+}
+
+/* Variante sur surface encre. */
+.frost-ink {
+  background: rgba(253, 251, 247, 0.045);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+/* Repli si backdrop-filter absent : opacité pleine, lisibilité préservée. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .frost     { background: rgba(253, 251, 247, 0.96); }
+  .frost-ink { background: rgba(18, 18, 18, 0.92); }
+}
+
+/* ═══════════════════════════════════════
+   CURSEUR PERSONNALISÉ
+═══════════════════════════════════════
+   Le curseur natif n'est masqué que si le composant a pu s'activer
+   (pointeur fin + mouvement non réduit) : il pose data-cursor="on".
+   Les champs de saisie gardent leur caret : on ne casse pas la frappe.
+═══════════════════════════════════════ */
+html[data-cursor='on'],
+html[data-cursor='on'] a,
+html[data-cursor='on'] button {
+  cursor: none;
+}
+html[data-cursor='on'] :where(input, textarea, select, [contenteditable]) {
+  cursor: auto;
+}
+
+/* ═══════════════════════════════════════
+   MOUVEMENT RÉDUIT — coupure générale
+═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   MICRO-INTERACTIONS — validation
+═══════════════════════════════════════ */
+
+/* Onde de confirmation au clic (retour haptique visuel). */
+@keyframes ripple {
+  from { opacity: 0.9; transform: scale(0.2); }
+  to   { opacity: 0;   transform: scale(2.4); }
+}
+.animate-ripple {
+  animation: ripple 420ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Sceau de commande : le cercle puis le trait se dessinent. */
+@keyframes draw-ring {
+  from { stroke-dashoffset: 233; }
+  to   { stroke-dashoffset: 0; }
+}
+.animate-draw-ring {
+  animation: draw-ring 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes draw-check {
+  from { stroke-dashoffset: 52; }
+  to   { stroke-dashoffset: 0; }
+}
+.animate-draw-check {
+  animation: draw-check 520ms cubic-bezier(0.16, 1, 0.3, 1) 650ms forwards;
+  stroke-dashoffset: 52;
 }

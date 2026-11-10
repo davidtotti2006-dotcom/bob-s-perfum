@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import useCartStore from '@/store/cartStore';
+import SampleSelector from '@/components/cart/SampleSelector';
+import { SHIPPING, formatPrice } from '@/lib/money';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity } = useCartStore();
@@ -56,7 +58,7 @@ export default function CartDrawer() {
                 <div className="w-10 h-4 rounded-t-sm" style={{ backgroundColor: '#c687a3' + '40' }} />
                 <div className="w-16 h-24 border-2 border-[#ebd5c1] relative bg-white/60
                   flex items-end justify-center pb-3">
-                  <span className="text-[7px] tracking-widest font-serif text-[#1a1a1a]/25">Bob's</span>
+                  <span className="text-[7px] tracking-widest font-serif text-[#1a1a1a]/25">Bob&apos;s</span>
                 </div>
                 <div className="w-12 h-3 rounded-full blur-md mt-1" style={{ background: '#c687a3' + '15' }} />
               </div>
@@ -83,7 +85,7 @@ export default function CartDrawer() {
                       <div className="w-14 h-20 border-2 relative flex items-end justify-center pb-2
                         bg-gradient-to-b from-[#faf9f8] to-[#f4f1ec]"
                         style={{ borderColor: c + '55' }}>
-                        <span className="text-[5px] tracking-widest font-serif text-[#1a1a1a]/35">Bob's</span>
+                        <span className="text-[5px] tracking-widest font-serif text-[#1a1a1a]/35">Bob&apos;s</span>
                       </div>
                       <div className="w-10 h-2 rounded-full blur-sm mt-0.5"
                         style={{ background: c + '20' }} />
@@ -135,28 +137,31 @@ export default function CartDrawer() {
         {/* Footer panier */}
         {items.length > 0 && (
           <div className="px-8 py-7 border-t border-[#ebd5c1]/40 space-y-5 bg-white">
+            {/* Coffret decouverte offert : choisi avant de payer, pas apres */}
+            <SampleSelector compact />
+
             <div className="flex justify-between items-baseline">
               <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400">Sous-total</span>
               <span className="font-serif text-3xl text-[#1a1a1a]">
                 {total.toLocaleString('fr-FR')} €
               </span>
             </div>
-            {total < 200 && (
+            {total < SHIPPING.freeFrom && (
               <div className="space-y-2">
                 <p className="text-[8px] tracking-[0.15em] uppercase text-gray-400">
-                  Plus que {(200 - total).toLocaleString('fr-FR')} € pour la livraison offerte
+                  Plus que {formatPrice(SHIPPING.freeFrom - total)} pour la livraison offerte
                 </p>
                 {/* Barre de progression */}
                 <div className="w-full h-[2px] bg-gray-100 rounded-full overflow-hidden">
                   <div className="h-full rounded-full transition-all duration-700"
                     style={{
-                      width: `${Math.min((total / 200) * 100, 100)}%`,
+                      width: `${Math.min((total / SHIPPING.freeFrom) * 100, 100)}%`,
                       background: 'linear-gradient(90deg, #c687a3, #b38b59)',
                     }} />
                 </div>
               </div>
             )}
-            {total >= 200 && (
+            {total >= SHIPPING.freeFrom && (
               <p className="text-[8px] tracking-[0.15em] uppercase text-[#6aabb0]">
                 ✓ Livraison offerte en France
               </p>
